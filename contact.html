@@ -42,26 +42,27 @@
                     <h3>General Inquiries</h3>
                     <p>For any questions regarding the conference, submission, or registration, please contact the organizing committee.</p>
                     <div style="margin-top: 20px;">
-                        <p><strong>Email:</strong> contact@afmpa1.univ-relizane.dz</p>
-                        <p><strong>Address:</strong> University of Relizane, Algeria</p>
+                        <p><strong>Email:</strong> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=afmpa1relizane@gmail.com" target="_blank" rel="noopener">afmpa1relizane@gmail.com</a></p>
+                        <p><strong>Phone:</strong> 0549.62.22.68</p>
+                        <p><strong>Address:</strong> Relizane University, Cité Bourmadia, BP 48000, Relizane, Algeria</p>
                     </div>
                 </div>
                 <div class="card">
                     <h3>Send a Message</h3>
-                    <form>
+                    <form id="contact-form">
                         <div style="margin-bottom: 15px;">
-                            <label style="display: block; margin-bottom: 5px;">Name</label>
-                            <input type="text" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                            <label for="contact-name" style="display: block; margin-bottom: 5px;">Name</label>
+                            <input id="contact-name" type="text" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
                         </div>
                         <div style="margin-bottom: 15px;">
-                            <label style="display: block; margin-bottom: 5px;">Email</label>
-                            <input type="email" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                            <label for="contact-email" style="display: block; margin-bottom: 5px;">Email</label>
+                            <input id="contact-email" type="email" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
                         </div>
                         <div style="margin-bottom: 15px;">
-                            <label style="display: block; margin-bottom: 5px;">Message</label>
-                            <textarea rows="4" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+                            <label for="contact-message" style="display: block; margin-bottom: 5px;">Message</label>
+                            <textarea id="contact-message" rows="4" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;"></textarea>
                         </div>
-                        <button type="button" class="btn" style="width: 100%; border: none; cursor: pointer;">Send Message</button>
+                        <button type="submit" class="btn" style="width: 100%; border: none; cursor: pointer;">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -76,5 +77,21 @@
         </div>
     </footer>
     <script src="js/main.js"></script>
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            var name = document.getElementById('contact-name').value.trim();
+            var email = document.getElementById('contact-email').value.trim();
+            var message = document.getElementById('contact-message').value.trim();
+            var body = 'Name: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message;
+            var gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1'
+                + '&to=afmpa1relizane@gmail.com'
+                + '&su=' + encodeURIComponent('AFMPA1 Contact Form Message')
+                + '&body=' + encodeURIComponent(body);
+
+            window.open(gmailUrl, '_blank', 'noopener');
+        });
+    </script>
 </body>
 </html>
